@@ -1,0 +1,36 @@
+"use strict";
+const mongoose = require("mongoose");
+const Product = require("../models/Product");
+
+exports.get = () => {
+    return Product.find(
+        {
+            active: true,
+        },
+        "title price slug"
+    );
+};
+
+exports.getBySlug = (slug) => {
+    return Product.findOne(
+        {
+            active: true,
+            slug: req.params.slug,
+        },
+        "title description price slug tags"
+    );
+};
+
+exports.getById = (id) => {
+    return Product.findById(id);
+};
+
+exports.getByTag = (tag) => {
+    return Product.find(
+        {
+            tags: tag,
+            active: true,
+        },
+        "title description price slug tags"
+    );
+};
