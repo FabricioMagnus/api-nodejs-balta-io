@@ -13,11 +13,13 @@ mongoose.connect('mongodb+srv://FabricioMagnus:DE68rock@cluster0.bsutdbs.mongodb
 //carrega as rotas
 const indexRoutes = require("./routes/index-route");
 const productRoutes = require("./routes/product-route");
+const customerRoutes = require('./routes/customer-route');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/", indexRoutes);
 app.use("/products", productRoutes);
+app.use("/customers", customerRoutes);
 
 module.exports = app;
